@@ -1,0 +1,14 @@
+BUILD_CONFIG := da14535
+DEVICE = __DA14535__
+
+BUILD_PROJ_NAME := beeper_ring
+PROJECTROOT := ../..
+
+#Clang doesn't have standard C libraries, need GCC standard C libraries and v6 thumb libraries
+GCC_LIB_DIR   := /Applications/ArmGNUToolchain/12.3.rel1/arm-none-eabi/
+
+LDSCRIPT = ldscript_DA14535.lds
+LDSCRIPTS_PATH = $(PROJECTROOT)/config/
+
+
+BUILD_OUTPUT_DIR := .

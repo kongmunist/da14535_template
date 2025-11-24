@@ -1,0 +1,3 @@
+[submodule "DA145xx_SDK"]
+	path = DA145xx_SDK
+	url = git@github.com:jeremyrittenhouse/DA145xx_SDK.git

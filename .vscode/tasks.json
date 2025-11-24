@@ -1,0 +1,58 @@
+{
+    "version": "1.0.0",
+    "tasks": [
+      {
+        "label": "build",
+        "type": "shell",
+        "command": "make -j12",
+        "options": {
+            "cwd": "./build/release"
+          },
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        }
+      },
+      {
+        "label": "Open Miniterm",
+        "type": "shell",
+        "command": "python",
+        "args": ["-m", "serial.tools.miniterm", "-", "115200"],
+        "presentation": {
+          "focus": true,
+          "panel": "new",
+          "clear": true
+        },
+        "isBackground": true,
+        // Hack that matches any output and immediately completes so that it can be used with launch.json and not block continuing the debugging
+        "problemMatcher": [
+          {
+            "owner": "custom",
+            "fileLocation": ["relative", "${workspaceFolder}"],
+            "pattern": [
+              {
+                "regexp": ".",
+                "file": 1,
+                "location": 2,
+                "message": 3
+              }
+            ],
+            "background": {
+              "activeOnStart": true,
+              "beginsPattern": ".",
+              "endsPattern": "."
+            }
+          }
+        ]
+      },
+      {
+        "label": "build-and-open-miniterm",
+        "dependsOrder": "parallel", // Ensure tasks run in sequence
+        "dependsOn": ["build", "Open Miniterm"],
+        "type": "shell",
+        "command": "echo", // This command is not executed, just a placeholder
+        "args": []
+    }, 
+    ]
+  }
+  

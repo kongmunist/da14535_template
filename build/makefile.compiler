@@ -1,0 +1,6 @@
+LLVM_HOME := /opt/homebrew/Cellar/llvm@16/16.0.6_1
+
+CC := 		$(LLVM_HOME)/bin/clang
+OBJCOPY :=  $(LLVM_HOME)/bin/llvm-objcopy
+OBJSIZE := 	$(LLVM_HOME)/bin/llvm-size
+TIDY :=		$(LLVM_HOME)/bin/clang-tidy

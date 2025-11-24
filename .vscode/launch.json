@@ -1,0 +1,53 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Debug (J-Link)",
+        "type": "cortex-debug",
+        "request": "launch",
+        "servertype": "jlink",
+        "cwd": "${workspaceRoot}",
+        "executable": "./build/release/da14535/beeper_ring.elf",
+        "device": "Cortex-M0",
+        "interface": "swd",
+        "runToEntryPoint": "Reset_Handler",
+        "preLaunchTask": "build",
+        // "preLaunchTask": "build-and-open-miniterm",
+        "serverArgs": [
+          "-endian",
+          "little",
+          "-speed",
+          "1000"
+        ],
+        // "showDevDebugOutput": "raw",
+        "preLaunchCommands": [
+          "set mem inaccessible-by-default off",
+          "monitor reset",
+          "set $temp = *(unsigned int*)0x50000012",
+          "set $temp = ($temp & 0xFFFC) | 0x2",
+          "set $temp = $temp | 0x8000",
+          "set *(unsigned int*)0x50000012 = $temp",
+      ],
+      "rttConfig": {
+      "enabled": true,
+      "address": "auto",
+      "searchSize": 4096,        
+      "searchRegexp": "_SEGGER_RTT",
+      "clearSearch": false,
+      "pollingPeriod": 1000,
+      "polling_interval": 10,
+      "decoders": [
+        {
+            "label": "RTT channel 0",
+            "port": 0,
+            "timestamp": true,
+            "type": "console",
+            // "type": "binary",
+            // "dataType": "uint16_t" 
+        }
+      ]
+      },
+      }
+    ]
+  }
+  

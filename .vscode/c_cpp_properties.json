@@ -1,0 +1,30 @@
+{
+    "configurations": [
+        {
+            "name": "Mac",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/DA145xx_SDK/6.0.22.1401/sdk/**",
+            ],
+            "defines": [
+                "__IS_SDK6_COMPILER_GCC__",
+                "__DA14531__",
+                "__DA14535__",
+                "__ARM_ARCH_6M__",
+                "BLE_CUSTOM1_SERVER",
+                "CFG_BLE",
+                "__thumb__"
+              ],
+              "forcedInclude": [
+                "${workspaceFolder}/config/da14535_config_advanced.h",
+                "${workspaceFolder}/config/da14535_config_basic.h",
+                "${workspaceFolder}/config/user_config.h",
+                "${workspaceFolder}/config/user_profiles_config.h",
+                "${workspaceFolder}/DA145xx_SDK/6.0.22.1401/sdk/common_project_files/da1458x_stack_config.h",
+                "${workspaceFolder}/DA145xx_SDK/6.0.22.1401/sdk/ble_stack/profiles/rwprf_config.h",
+                "${workspaceFolder}/app_src/memfault/memfault_platform_config.h"
+              ]
+        }
+    ],
+    "version": 4
+}

@@ -1,0 +1,29 @@
+{
+    "files.exclude": {
+        "DA145xx_SDK": true,
+        "**/.DS_Store": true,
+        "**/mem_DA14585_586.lds": true,
+        "**/DA14585_586.sct": true,
+        "**/startup_DA14585_586.s": true,
+    },
+    "C_Cpp.errorSquiggles": "disabled",
+    "files.associations": {
+        "app_proxr.h": "c",
+        "__bit_reference": "cpp",
+        "__node_handle": "cpp",
+        "atomic": "cpp",
+        "bitset": "cpp",
+        "__memory": "cpp",
+        "limits": "cpp",
+        "locale": "cpp",
+        "optional": "cpp",
+        "ratio": "cpp",
+        "system_error": "cpp",
+        "tuple": "cpp",
+        "vector": "cpp",
+        "segger_swd_printf.h": "c",
+        "dma.h": "c",
+        "adc.h": "c"
+    }
+  }
+  
