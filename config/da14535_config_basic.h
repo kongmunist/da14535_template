@@ -2,6 +2,7 @@
 #define B8B4BE28_987C_4523_948E_A9239026B10F
 
 #include "da1458x_stack_config.h"
+#include "user_profiles_config.h"
 
 /***************************************************************************************************************/
 /* Integrated or external processor configuration                                                              */
