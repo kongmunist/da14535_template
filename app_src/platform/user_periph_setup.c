@@ -70,22 +70,13 @@ void set_pad_functions(void)
     i.e. to set P0_1 as Generic purpose Output:
     GPIO_ConfigurePin(GPIO_PORT_0, GPIO_PIN_1, OUTPUT, PID_GPIO, false);
 */
-#if defined (__DA14586__)
-    // Disallow spontaneous DA14586 SPI Flash wake-up
-    GPIO_ConfigurePin(GPIO_PORT_2, GPIO_PIN_3, OUTPUT, PID_GPIO, true);
-#endif
+    // // Set DCDC converter voltage level for OTP read (required for OTP copy to RAM at wake up)
+    // syscntl_dcdc_set_level(SYSCNTL_DCDC_LEVEL_1V8); // SYSCNTL_DCDC_LEVEL_1V725 save a little power
+    // SetBits16(DCDC_CTRL_REG, DCDC_ENABLE, 1);
+    // // Wait for the indication that VBAT_HIGH (boost mode) is OK
+    // // JMR 12/17 At 1.2V power supply this is about 20µS. at 1.5 v it is about 6µS
+    // while (!GetBits(ANA_STATUS_REG, DCDC_OK));
 
-#if defined (CFG_PRINTF_UART2)
-    // Configure UART2 TX Pad
-    GPIO_ConfigurePin(UART2_TX_PORT, UART2_TX_PIN, OUTPUT, PID_UART2_TX, false);
-#endif
-
-    // Set DCDC converter voltage level for OTP read (required for OTP copy to RAM at wake up)
-    syscntl_dcdc_set_level(SYSCNTL_DCDC_LEVEL_1V8); // SYSCNTL_DCDC_LEVEL_1V725 save a little power
-    SetBits16(DCDC_CTRL_REG, DCDC_ENABLE, 1);
-    // Wait for the indication that VBAT_HIGH (boost mode) is OK
-    // JMR 12/17 At 1.2V power supply this is about 20µS. at 1.5 v it is about 6µS
-    while (!GetBits(ANA_STATUS_REG, DCDC_OK));
 }
 
 #if defined (CFG_PRINTF_UART2)
@@ -128,8 +119,10 @@ void periph_init(void)
     uart_initialize(UART2, &uart_cfg);
 #endif
 
+
     // Set pad functionality
     set_pad_functions();
+    GPIO_ConfigurePin(LED_PORT, LED_PIN, OUTPUT, PID_GPIO, false);
 
     // Enable the pads
     GPIO_set_pad_latch_en(true);

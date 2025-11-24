@@ -72,13 +72,13 @@
 /****************************************************************************************/
 /* LED configuration                                                                    */
 /****************************************************************************************/
-#if defined (__DA14531__)
+// #if defined (__DA14531__)
     #define LED_PORT      GPIO_PORT_0
     #define LED_PIN       GPIO_PIN_9
-#else
-    #define LED_PORT      GPIO_PORT_1
-    #define LED_PIN       GPIO_PIN_0
-#endif
+// #else
+//     #define LED_PORT      GPIO_PORT_1
+//     #define LED_PIN       GPIO_PIN_0
+// #endif
 
 /***************************************************************************************/
 /* Production debug output configuration                                               */

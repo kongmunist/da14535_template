@@ -10,7 +10,7 @@
         "executable": "./build/release/da14535/beeper_ring.elf",
         "device": "Cortex-M0",
         "interface": "swd",
-        "runToEntryPoint": "Reset_Handler",
+        // "runToEntryPoint": "Reset_Handler",
         "preLaunchTask": "build",
         // "preLaunchTask": "build-and-open-miniterm",
         "serverArgs": [

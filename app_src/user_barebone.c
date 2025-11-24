@@ -46,6 +46,7 @@
 #include "user_barebone.h"
 #include "user_periph_setup.h"
 
+#include "SEGGER_SWD_printf.h"
 /*
  * FUNCTION DEFINITIONS
  ****************************************************************************************
@@ -79,6 +80,7 @@ void control_LED(bool state)
  */
 void user_app_on_init(void)
 {
+    SWD_printf("user_app_on_init\n");
     default_app_on_init();
 }
 
@@ -91,7 +93,8 @@ void user_app_on_init(void)
  ****************************************************************************************
  */
 void user_on_connection(uint8_t connection_idx, struct gapc_connection_req_ind const *param)
-{
+{   
+    SWD_printf("user_on_connection\n");
     default_app_on_connection(connection_idx, param);
     control_LED(true);
 }
@@ -105,6 +108,7 @@ void user_on_connection(uint8_t connection_idx, struct gapc_connection_req_ind c
  */
 void user_on_disconnect(struct gapc_disconnect_ind const *param)
 {
+    SWD_printf("user_on_disconnect\n");
     default_app_on_disconnect(param);
     control_LED(false);
 }
